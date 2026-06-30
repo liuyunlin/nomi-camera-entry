@@ -26,10 +26,24 @@
       aspect-ratio: 1 / 1;
       object-fit: contain;
     }
+    .caption {
+      margin: 20px 0 0;
+      display: grid;
+      gap: 10px;
+      justify-items: center;
+    }
+    .rule {
+      width: min(220px, 70%);
+      height: 1px;
+      background: #111;
+      opacity: .18;
+    }
     p {
-      margin: 18px 0 0;
+      margin: 0;
+      padding: 0 8px;
       font-size: 16px;
       line-height: 1.6;
+      letter-spacing: .02em;
       color: #222;
     }
   </style>
@@ -37,7 +51,11 @@
 <body>
   <main>
     <img src="assets/nomi-miniapp-qr.png" alt="Nomi相机小程序二维码" />
-    <p>请用微信扫一扫二维码，打开 Nomi相机小程序</p>
+    <div class="caption">
+      <div class="rule"></div>
+      <p>请用微信扫一扫二维码，打开 Nomi相机小程序</p>
+      <div class="rule"></div>
+    </div>
   </main>
 </body>
 </html>
