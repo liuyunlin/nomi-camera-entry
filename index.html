@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-store" />
   <title>Nomi相机</title>
-  <meta name="description" content="Nomi相机小程序体验入口" />
   <style>
     * { box-sizing: border-box; }
     html, body { height: 100%; }
@@ -17,7 +17,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
     main {
-      width: min(360px, calc(100vw - 48px));
+      width: min(340px, calc(100vw - 56px));
       text-align: center;
     }
     img {
@@ -27,13 +27,13 @@
       object-fit: contain;
     }
     .caption {
-      margin: 20px 0 0;
+      margin-top: 22px;
       display: grid;
       gap: 10px;
       justify-items: center;
     }
     .rule {
-      width: min(220px, 70%);
+      width: min(220px, 72%);
       height: 1px;
       background: #111;
       opacity: .18;
@@ -53,7 +53,7 @@
     <img src="assets/nomi-miniapp-qr.png" alt="Nomi相机小程序二维码" />
     <div class="caption">
       <div class="rule"></div>
-      <p>请用微信扫一扫二维码，打开 Nomi相机小程序</p>
+      <p>请用微信扫一扫二维码，体验 Nomi相机小程序</p>
       <div class="rule"></div>
     </div>
   </main>
