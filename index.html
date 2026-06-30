@@ -3,377 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nomi相机｜小程序体验入口</title>
-  <meta name="description" content="Nomi相机微信小程序黑客松体验入口" />
-  <meta property="og:title" content="Nomi相机｜小程序体验入口" />
-  <meta property="og:description" content="拍一张照片，说一句记忆，生成一张 Nomi 小纸片" />
+  <title>Nomi相机</title>
+  <meta name="description" content="Nomi相机小程序体验入口" />
   <style>
-    :root {
-      color-scheme: light;
-      --cream: #fff8ed;
-      --paper: #fffdf8;
-      --ink: #172033;
-      --soft-ink: #4f5f73;
-      --muted: #7b8798;
-      --line: rgba(97, 74, 43, .14);
-      --blue: #5c8dff;
-      --blue-dark: #2f62d6;
-      --pink: #ff9fb7;
-      --yellow: #ffd978;
-      --shadow: 0 28px 90px rgba(48, 35, 19, .18);
-    }
-
     * { box-sizing: border-box; }
-
+    html, body { height: 100%; }
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: ui-rounded, -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 10%, rgba(255, 214, 122, .55), transparent 27%),
-        radial-gradient(circle at 82% 8%, rgba(92, 141, 255, .32), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(255, 159, 183, .34), transparent 28%),
-        linear-gradient(145deg, #f7efe1 0%, #f8f3eb 46%, #edf4ff 100%);
-      overflow-x: hidden;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 210px;
-      height: 210px;
-      border-radius: 48% 52% 42% 58%;
-      background: rgba(255, 255, 255, .5);
-      filter: blur(.2px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    body::before { left: -64px; top: 18%; transform: rotate(18deg); }
-    body::after { right: -80px; bottom: 8%; transform: rotate(-12deg); }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      padding: 34px 20px 28px;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.04fr) minmax(300px, .82fr);
-      gap: 28px;
-      align-items: stretch;
-      min-height: calc(100vh - 68px);
-    }
-
-    .copy,
-    .scan-panel {
-      border: 1px solid var(--line);
-      background: rgba(255, 253, 248, .78);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(22px);
-    }
-
-    .copy {
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(28px, 5vw, 56px);
-      border-radius: 38px;
-    }
-
-    .copy::after {
-      content: "";
-      position: absolute;
-      right: -58px;
-      top: -68px;
-      width: 220px;
-      height: 220px;
-      border-radius: 56px;
-      background: linear-gradient(135deg, rgba(92, 141, 255, .18), rgba(255, 159, 183, .2));
-      transform: rotate(20deg);
-    }
-
-    .brand-row {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--blue-dark);
-      font-weight: 800;
-      letter-spacing: .02em;
-    }
-
-    .logo-mark {
-      width: 42px;
-      height: 42px;
       display: grid;
       place-items: center;
-      border-radius: 15px;
-      background: #ffffff;
-      box-shadow: inset 0 0 0 1px rgba(47, 98, 214, .1), 0 12px 24px rgba(47, 98, 214, .14);
+      background: #fff;
+      color: #111;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
-
-    .logo-mark span {
-      width: 20px;
-      height: 20px;
-      border: 4px solid var(--blue);
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .logo-mark span::after {
-      content: "";
-      position: absolute;
-      right: -7px;
-      top: -7px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--pink);
-    }
-
-    h1 {
-      position: relative;
-      z-index: 1;
-      margin: 34px 0 16px;
-      max-width: 680px;
-      font-size: clamp(44px, 8vw, 92px);
-      line-height: .94;
-      letter-spacing: -.07em;
-    }
-
-    .lead {
-      position: relative;
-      z-index: 1;
-      max-width: 620px;
-      margin: 0;
-      color: var(--soft-ink);
-      font-size: clamp(17px, 2vw, 22px);
-      line-height: 1.72;
-    }
-
-    .highlight {
-      display: inline;
-      padding: 0 .18em;
-      border-radius: .45em;
-      background: linear-gradient(180deg, transparent 52%, rgba(255, 217, 120, .72) 52%);
-      color: var(--ink);
-      font-weight: 800;
-    }
-
-    .flow {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    .flow-card {
-      min-height: 116px;
-      padding: 16px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, .7);
-      border: 1px solid rgba(255, 255, 255, .8);
-    }
-
-    .flow-card strong {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
-
-    .flow-card span {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .scan-panel {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 24px;
-      border-radius: 38px;
+    main {
+      width: min(360px, calc(100vw - 48px));
       text-align: center;
     }
-
-    .status-pill {
-      align-self: center;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 8px 13px;
-      border-radius: 999px;
-      background: rgba(237, 244, 255, .95);
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #31c48d;
-      box-shadow: 0 0 0 5px rgba(49, 196, 141, .15);
-    }
-
-    .qr-shell {
-      position: relative;
-      width: min(330px, 100%);
-      margin: 0 auto;
-      padding: 15px;
-      border-radius: 32px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,248,236,.98));
-      box-shadow: inset 0 0 0 1px rgba(97, 74, 43, .12), 0 18px 42px rgba(39, 39, 39, .13);
-    }
-
-    .qr-shell::before {
-      content: "";
-      position: absolute;
-      inset: -8px;
-      z-index: -1;
-      border-radius: 38px;
-      background: conic-gradient(from 180deg, var(--blue), var(--pink), var(--yellow), var(--blue));
-      opacity: .36;
-      filter: blur(12px);
-    }
-
-    .qr-shell img {
+    img {
       display: block;
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: contain;
-      border-radius: 20px;
-      background: #fff;
     }
-
-    .qr-placeholder {
-      display: grid;
-      place-items: center;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 12px, #e5e7eb 12px, #e5e7eb 24px);
-      color: #6b7280;
-      font-weight: 800;
+    p {
+      margin: 18px 0 0;
+      font-size: 16px;
       line-height: 1.6;
-      padding: 20px;
-    }
-
-    .scan-title {
-      margin: 22px 0 8px;
-      font-size: 24px;
-      letter-spacing: -.03em;
-    }
-
-    .scan-copy {
-      max-width: 390px;
-      margin: 0 auto;
-      color: var(--soft-ink);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .notice {
-      margin-top: 18px;
-      padding: 14px 16px;
-      border-radius: 20px;
-      background: rgba(255, 245, 223, .9);
-      color: #805700;
-      font-size: 13px;
-      line-height: 1.7;
-      text-align: left;
-    }
-
-    .footer {
-      margin-top: 16px;
-      color: rgba(79, 95, 115, .72);
-      font-size: 12px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 860px) {
-      .page { padding: 16px; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .copy, .scan-panel { border-radius: 30px; }
-      .flow { grid-template-columns: 1fr; }
-      .flow-card { min-height: auto; }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .qr-shell { animation: float 4.8s ease-in-out infinite; }
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-6px); }
-      }
+      color: #222;
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="hero" aria-label="Nomi相机小程序体验入口">
-      <div class="copy">
-        <div>
-          <div class="brand-row">
-            <div class="logo-mark" aria-hidden="true"><span></span></div>
-            <div>Nomi Camera · Hackathon Preview</div>
-          </div>
-
-          <h1>拍一张照片，<br />藏进一张小纸片。</h1>
-          <p class="lead">
-            Nomi相机是一款微信小程序：评委老师可用它拍摄日常照片，添加一句语音记忆，系统会基于
-            <span class="highlight">原图 + 语音文本 + 风格提示</span>
-            生成一张可保存、分享或打印的 Nomi 小纸片照片。
-          </p>
-        </div>
-
-        <div class="flow" aria-label="体验路径">
-          <div class="flow-card">
-            <strong>01 打开相机</strong>
-            <span>进入小程序后直接拍照，不需要先绑定打印机。</span>
-          </div>
-          <div class="flow-card">
-            <strong>02 说一句</strong>
-            <span>可选择录入一句记忆，让画面更贴近当下情绪。</span>
-          </div>
-          <div class="flow-card">
-            <strong>03 生成纸片</strong>
-            <span>生成风格化照片，可保存、分享，连接设备后可打印。</span>
-          </div>
-        </div>
-      </div>
-
-      <aside class="scan-panel">
-        <div class="status-pill"><span class="dot"></span> 微信扫码体验</div>
-        <div class="qr-shell" aria-label="Nomi相机小程序二维码">
-          <img src="assets/nomi-miniapp-qr.png" alt="Nomi相机小程序二维码" onerror="this.replaceWith(document.getElementById('qrFallback').content.cloneNode(true))" />
-          <template id="qrFallback">
-            <div class="qr-placeholder">二维码待更新<br />请联系项目方获取体验版二维码</div>
-          </template>
-        </div>
-        <h2 class="scan-title">评委老师们请用微信扫一扫</h2>
-        <p class="scan-copy">扫码后即可进入 Nomi相机小程序，体验“拍照 → 说一句 → 生成小纸片”的完整链路。</p>
-        <div class="notice">
-          当前可能为体验版二维码。若微信提示无体验权限，请联系项目方添加体验成员；正式版审核通过后，本页面会替换为正式小程序码，页面链接保持不变。
-        </div>
-        <div class="footer">Nomi相机 · 小程序体验入口</div>
-      </aside>
-    </section>
+  <main>
+    <img src="assets/nomi-miniapp-qr.png" alt="Nomi相机小程序二维码" />
+    <p>请用微信扫一扫二维码，打开 Nomi相机小程序</p>
   </main>
 </body>
 </html>
