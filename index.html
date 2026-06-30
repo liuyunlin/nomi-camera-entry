@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nomi相机｜体验入口</title>
+  <meta name="description" content="Nomi相机小程序体验入口" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f4ee;
+      --card: #fffaf2;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --line: #eadfce;
+      --blue: #5b8def;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #eef5ff 0, var(--bg) 42%, #f3eadc 100%);
+      color: var(--ink);
+    }
+    main {
+      width: min(720px, 100%);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 250, 242, .92);
+      box-shadow: 0 24px 80px rgba(65, 48, 25, .14);
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #edf4ff;
+      color: #2f5fb8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    h1 {
+      margin: 18px 0 8px;
+      font-size: clamp(34px, 8vw, 58px);
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+    p {
+      margin: 0 auto;
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .qr-card {
+      margin: 26px auto 18px;
+      width: min(340px, 100%);
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: white;
+    }
+    .qr-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #f3f4f6;
+    }
+    .qr-placeholder {
+      display: grid;
+      place-items: center;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 12px, #e5e7eb 12px, #e5e7eb 24px);
+      color: #6b7280;
+      font-weight: 700;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .note {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: #fff5df;
+      color: #7a4b00;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: left;
+    }
+    .steps {
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .footer {
+      margin-top: 24px;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">微信小程序体验入口</span>
+    <h1>Nomi相机</h1>
+    <p>拍一张日常照片，说一句记忆，Nomi 会根据原图、语音文本和风格提示生成一张可保存、分享或打印的小纸片照片。</p>
+
+    <section class="qr-card" aria-label="Nomi相机小程序二维码">
+      <img src="assets/nomi-miniapp-qr.png" alt="Nomi相机小程序二维码" onerror="this.replaceWith(document.getElementById('qrFallback').content.cloneNode(true))" />
+      <template id="qrFallback">
+        <div class="qr-placeholder">二维码待更新<br />请联系项目方获取体验版二维码</div>
+      </template>
+    </section>
+
+    <div class="note">
+      当前入口可用于黑客松评审。若显示为体验版，微信可能要求先添加体验成员；正式版审核通过后，本页面会更新为正式小程序码，入口链接保持不变。
+    </div>
+
+    <div class="steps">
+      <div><strong>体验路径：</strong>打开小程序 → 拍照 → 可说一句 → 生成风格化照片 → 保存/分享/打印。</div>
+      <div><strong>如果无法打开：</strong>请联系项目方添加微信体验权限，或稍后使用正式版二维码。</div>
+    </div>
+
+    <div class="footer">Nomi Camera · Hackathon Preview</div>
+  </main>
+</body>
+</html>
