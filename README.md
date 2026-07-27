@@ -19,6 +19,14 @@ Nomi 是一个持续迭代中的**软硬件结合项目**：用户通过微信�
 | <img src="assets/screenshots/nomi-camera.png" alt="Nomi 拍照界面" width="240" /> | <img src="assets/screenshots/nomi-compose.png" alt="Nomi 记录生成界面" width="240" /> | <img src="assets/screenshots/nomi-archive.png" alt="Nomi 照片中心与日历" width="240" /> |
 | 打开相机，选择智能或固定视觉模板 | 为照片补充语音记忆，生成卡片并发送打印 | 在照片中心、日历和照片墙中回看记录 |
 
+### 首页侧边栏与猫猫卡片
+
+<p align="center">
+  <img src="assets/screenshots/nomi-home-sidebar.png" alt="Nomi 首页侧边栏与猫猫记忆卡片" width="300" />
+</p>
+
+侧边栏集中展示用户身份、Nomi 记忆相机入口、记忆数据和个人功能导航；猫猫卡片让数据反馈更有陪伴感。
+
 ## 为什么是软硬件结合
 
 Nomi 不只是在手机里生成一张图片。它尝试把一段数字记忆转化为可以保存、回看和触摸的实体媒介：
