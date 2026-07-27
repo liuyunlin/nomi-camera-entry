@@ -14,7 +14,7 @@ Nomi 是一个持续迭代中的**软硬件结合项目**：用户通过微信�
 
 ## 产品体验
 
-| 拍照与风格选择 | 记录生成与打印 | 照片归档与回看 |
+| 拍照与风格选择 | 记录生成与打印 | 照片中心与日历 |
 | --- | --- | --- |
 | <img src="assets/screenshots/nomi-camera.png" alt="Nomi 拍照界面" width="240" /> | <img src="assets/screenshots/nomi-compose.png" alt="Nomi 记录生成界面" width="240" /> | <img src="assets/screenshots/nomi-archive.png" alt="Nomi 照片中心与日历" width="240" /> |
 | 打开相机，选择智能或固定视觉模板 | 为照片补充语音记忆，生成卡片并发送打印 | 在照片中心、日历和照片墙中回看记录 |
